@@ -97,6 +97,8 @@ Route::group(
 
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use App\Article;
+
 Route::get('test', function(){
 
 
@@ -115,12 +117,16 @@ Route::get('test', function(){
 
 
     //https://carbon.nesbot.com/docs/#api-getters
-    $mutable = Carbon::now();
-    $immutable = CarbonImmutable::now();
-    //dd($mutable, $immutable);
-    $carbon = new Carbon(new DateTime('first day of January 2008'), new DateTimeZone('Africa/Cairo'));
-    //dd($carbon);
+    // $mutable = Carbon::now();
+    // $immutable = CarbonImmutable::now();
+    // //dd($mutable, $immutable);
+    // $carbon = new Carbon(new DateTime('first day of January 2008'), new DateTimeZone('Africa/Cairo'));
+    // //dd($carbon);
 
+
+    //Cache::
+
+    dd(App\User::where('id', 1)->exists());
 
 });
 
