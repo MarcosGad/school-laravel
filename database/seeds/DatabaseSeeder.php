@@ -12,5 +12,10 @@ class DatabaseSeeder extends Seeder
         $this->call(religionTableSeeder::class);
         $this->call(GenderTableSeeder::class);
         $this->call(ParentsTableSeeder::class);
+        //make by Package
+        //https://github.com/orangehill/iseed
+        //php artisan iseed student_accounts
+        $this->call(StudentAccountsTableSeeder::class);
+
     }
 }
