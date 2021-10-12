@@ -62,6 +62,11 @@
 
                         <!-- <i class="gg-alarm"></i> -->
 
+
+                       
+                        {!! $chart1->renderHtml() !!}
+
+
                         
                     </div>
                     <div class="col-sm-6">
@@ -87,6 +92,10 @@
  footer -->
 
     @include('layouts.footer-scripts')
+
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
+
 
 </body>
 

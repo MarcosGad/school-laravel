@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+
 
 
 
@@ -21,7 +23,7 @@ class HomeController extends Controller
   
     public function index(Request $request)
     {
-        return view('dashboard');
+        //return view('dashboard');
 
         // $Students = Student::withCount('attendance')->get()->toArray();
         // $data_one = DB::table('nationalities')->skip(4)->take(6)->get();;
@@ -53,6 +55,21 @@ class HomeController extends Controller
         // $Stud = Student::where('gender_id', true)->get();
         // $Stud = Student::where('gender_id', false)->get();
         // $Stud = Student::where('gender_id', '<>' ,false)->get(); == true
+
+
+        //https://github.com/LaravelDaily/laravel-charts
+        $chart_options = [
+            'chart_title' => 'Users',
+            'report_type' => 'group_by_date',
+            'model' => 'App\User',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'bar',
+            'chart_color' => 'black'
+        ];
+        $chart1 = new LaravelChart($chart_options);
+
+        return view('dashboard', compact('chart1'));
 
     }
 }
