@@ -99,6 +99,10 @@ use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use App\Article;
 
+use AshAllenDesign\LaravelExchangeRates\Classes\ExchangeRate;
+use Illuminate\Support\Facades\Http;
+
+
 Route::get('test', function(){
 
 
@@ -126,7 +130,12 @@ Route::get('test', function(){
 
     //Cache::
 
-    dd(App\User::where('id', 1)->exists());
+    //dd(App\User::where('id', 1)->exists());
+
+    //https://ashallendesign.co.uk/blog/how-to-get-currency-exchange-rates-in-laravel
+    //https://github.com/ash-jc-allen/laravel-exchange-rates
+    //$response = Http::get('http://api.exchangeratesapi.io/v1/latest?access_key=3d4ea89988945b324591b69ae0cc9673&symbols=USD,AUD,CAD,PLN,MXN&format=1');
+    //return $response->json();
 
 });
 

@@ -4,8 +4,75 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "922a4e2ef6238cdf4e0332cf018ccc74",
+    "content-hash": "c2363b1f148a7c6bee75e1c07819b016",
     "packages": [
+        {
+            "name": "ashallendesign/laravel-exchange-rates",
+            "version": "v4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ash-jc-allen/laravel-exchange-rates.git",
+                "reference": "61426ee717e767087a0e5e42737ee74592fa9282"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ash-jc-allen/laravel-exchange-rates/zipball/61426ee717e767087a0e5e42737ee74592fa9282",
+                "reference": "61426ee717e767087a0e5e42737ee74592fa9282",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3|^7.0",
+                "illuminate/cache": "^6.0|^7.0|^8.0",
+                "illuminate/container": "^6.0|^7.0|^8.0",
+                "nesbot/carbon": "~2.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^3.8|^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AshAllenDesign\\LaravelExchangeRates\\Providers\\ExchangeRatesProvider"
+                    ],
+                    "aliases": {
+                        "ExchangeRate": "AshAllenDesign\\LaravelExchangeRates\\Facades\\ExchangeRate"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AshAllenDesign\\LaravelExchangeRates\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ash Allen",
+                    "email": "mail@ashallendesign.co.uk"
+                }
+            ],
+            "description": "A wrapper package for interacting with the exchangeratesapi.io API.",
+            "homepage": "https://github.com/ash-jc-allen/laravel-exchange-rates",
+            "keywords": [
+                "ashallendesign",
+                "exchange-rate",
+                "exchangeratesapi.io",
+                "laravel-exchange-rates"
+            ],
+            "support": {
+                "issues": "https://github.com/ash-jc-allen/laravel-exchange-rates/issues",
+                "source": "https://github.com/ash-jc-allen/laravel-exchange-rates/tree/v4.1.0"
+            },
+            "time": "2021-05-03T18:00:12+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",
