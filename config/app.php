@@ -178,6 +178,7 @@ return [
         //add by me 
         App\Providers\RepoServiceProvider::class,
         App\Providers\MyCustomValidation::class,
+        Propaganistas\LaravelDisposableEmail\DisposableEmailServiceProvider::class,
     ],
 
     /*
