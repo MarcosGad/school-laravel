@@ -122,7 +122,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('Fees.index')}}">الرسوم الدراسية</a> </li>
+                            <li> <a href="{{url('Fees')}}">الرسوم الدراسية</a> </li>
                             <li> <a href="{{route('Fees_Invoices.index')}}">الفواتير</a> </li>
                             <li> <a href="{{route('receipt_students.index')}}">سندات القبض</a> </li>
                             <li> <a href="{{route('ProcessingFee.index')}}">استبعاد رسوم</a> </li>

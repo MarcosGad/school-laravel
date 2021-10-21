@@ -69,6 +69,18 @@ class HomeController extends Controller
         ];
         $chart1 = new LaravelChart($chart_options);
 
+        // $current = url()->current();
+        // $full = url()->full();
+        // $previous = url()->previous();
+        // dd($full);
+        // return abort(403, 'sayyyyyyyyyyyyyyyyyy.');
+
+        // https://laravel.com/docs/8.x/helpers#method-blank
+        // return blank(collect());
+
+        // $value = config('app.timezone');
+        // dd($value);
+
         return view('dashboard', compact('chart1'));
 
     }
