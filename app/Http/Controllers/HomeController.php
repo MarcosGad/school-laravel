@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
-
+use Illuminate\Support\Facades\App;
 
 
 
@@ -80,6 +80,9 @@ class HomeController extends Controller
 
         // $value = config('app.timezone');
         // dd($value);
+
+        // $environment = App::environment();
+        // dd($environment);
 
         return view('dashboard', compact('chart1'));
 
