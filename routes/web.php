@@ -101,7 +101,7 @@ use App\Article;
 
 use AshAllenDesign\LaravelExchangeRates\Classes\ExchangeRate;
 use Illuminate\Support\Facades\Http;
-
+use App\RunningNumber;
 
 Route::get('test', function(){
 
@@ -136,6 +136,28 @@ Route::get('test', function(){
     //https://github.com/ash-jc-allen/laravel-exchange-rates
     //$response = Http::get('http://api.exchangeratesapi.io/v1/latest?access_key=3d4ea89988945b324591b69ae0cc9673&symbols=USD,AUD,CAD,PLN,MXN&format=1');
     //return $response->json();
+
+    //https://techsolutionstuff.com/post/how-to-convert-php-array-to-json-object
+    // $colors = ['Red', 'Green', 'Blue'];
+    // $colorsJSONObject = json_encode($colors, JSON_FORCE_OBJECT);
+    // echo $colorsJSONObject;
+
+
+
+    // namespace App\Models;
+    // use Illuminate\Database\Eloquent\Model;
+    // class Submission extends Model
+    // {
+    //     protected static function booted()
+    //     {
+    //         static::creating(function ($submission) {
+    //             $submission->case_id = RunningNumber::generate($submission->type);
+    //         });
+    //     }
+    // }
+    //dd(RunningNumber::generate('approval'));
+    //dd(RunningNumber::generate('mod'));
+  
 
 });
 
