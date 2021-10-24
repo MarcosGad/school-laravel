@@ -67,6 +67,7 @@ Route::group(
                 Route::resource('ProcessingFee', 'ProcessingFeeController');
                 Route::resource('Payment_students', 'PaymentController');
                 Route::resource('Attendance', 'AttendanceController');
+                Route::resource('online_classes', 'OnlineClasseController');
             });
 
             //==============================Subjects============================
@@ -88,6 +89,8 @@ Route::group(
             Route::group(['namespace' => 'questions'], function () {
                 Route::resource('questions', 'QuestionController');
             });
+
+            
             
         
         });

@@ -20,6 +20,7 @@
         "laravel/ui": "2.4",
         "laraveldaily/laravel-charts": "^0.1.27",
         "livewire/livewire": "^2.3",
+        "macsidigital/laravel-zoom": "^4.1",
         "mattkingshott/axiom": "^3.2",
         "mcamara/laravel-localization": "^1.6",
         "orangehill/iseed": "^3.0",
