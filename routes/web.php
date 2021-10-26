@@ -67,7 +67,10 @@ Route::group(
                 Route::resource('ProcessingFee', 'ProcessingFeeController');
                 Route::resource('Payment_students', 'PaymentController');
                 Route::resource('Attendance', 'AttendanceController');
+                
                 Route::resource('online_classes', 'OnlineClasseController');
+                Route::get('/indirect', 'OnlineClasseController@indirectCreate')->name('indirect.create');
+                Route::post('/indirect', 'OnlineClasseController@storeIndirect')->name('indirect.store');
             });
 
             //==============================Subjects============================
