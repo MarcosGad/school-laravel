@@ -67,6 +67,17 @@
                         {!! $chart1->renderHtml() !!}
 
 
+                        <div class="col-sm-12 col-md-4 col-md-offset-4">    
+                            <div class="progress progress-micro mb-10">
+                            <div class="progress-bar bg-indigo-400" style="width: {{$diskuse}}">
+                                <span class="sr-only">{{$diskuse}}</span>
+                            </div>
+                            </div>
+                            <span class="pull-right">{{round($diskusedize,2)}} GB /
+                            {{round($disktotalsize,2)}} GB ({{$diskuse}})</span>       
+                        </div>
+
+
                         
                     </div>
                     <div class="col-sm-6">

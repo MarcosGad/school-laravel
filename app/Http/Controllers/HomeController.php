@@ -84,7 +84,16 @@ class HomeController extends Controller
         // $environment = App::environment();
         // dd($environment);
 
-        return view('dashboard', compact('chart1'));
+
+        $disktotal = disk_total_space('/'); //DISK usage
+        $disktotalsize = $disktotal / 1073741824;
+        $diskfree  = disk_free_space('/');
+        $used = $disktotal - $diskfree;
+        $diskusedize = $used / 1073741824;
+        $diskuse1   = round(100 - (($diskusedize / $disktotalsize) * 100));
+        $diskuse = round(100 - ($diskuse1)) . '%';
+
+        return view('dashboard', compact('chart1','diskuse','disktotalsize','diskusedize'));
 
     }
 }
