@@ -93,6 +93,8 @@ class HomeController extends Controller
         $diskuse1   = round(100 - (($diskusedize / $disktotalsize) * 100));
         $diskuse = round(100 - ($diskuse1)) . '%';
 
+        //return Str::random(60);
+
         return view('dashboard', compact('chart1','diskuse','disktotalsize','diskusedize'));
 
     }
