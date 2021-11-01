@@ -71,6 +71,9 @@ Route::group(
                 Route::resource('online_classes', 'OnlineClasseController');
                 Route::get('/indirect', 'OnlineClasseController@indirectCreate')->name('indirect.create');
                 Route::post('/indirect', 'OnlineClasseController@storeIndirect')->name('indirect.store');
+
+                Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
+                Route::resource('library', 'LibraryController');
             });
 
             //==============================Subjects============================
