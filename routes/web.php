@@ -96,8 +96,8 @@ Route::group(
                 Route::resource('questions', 'QuestionController');
             });
 
-            
-            
+            //==============================Setting============================
+            Route::resource('settings', 'SettingController');
         
         });
         
