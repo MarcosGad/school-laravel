@@ -1,9 +1,16 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
+// use Illuminate\Support\Facades\Auth;
 // Auth::routes();
-Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
+
+Route::get('/', 'HomeController@index')->name('selection');
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');  
+    Route::post('/login','LoginController@login')->name('login');
+});
+
 
 
 Route::group(
@@ -12,7 +19,7 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], function(){
 
-        Route::get('/', function(){ return view('auth.login'); });
+        // Route::get('/', function(){ return view('auth.login_old'); });
 
         Route::group(['middleware'=>['auth']],function(){
 

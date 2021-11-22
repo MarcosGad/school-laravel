@@ -15,7 +15,7 @@
 
     <!-- Font -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
+          href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
 
     <!-- css -->
     <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
@@ -24,179 +24,127 @@
 
 <body>
 
-@if (App::getLocale() == 'ar')
+<div class="wrapper">
+    <!--=================================
+preloader -->
 
-@else
- <style>
-    body{
-      direction: ltr;
-    }
-    .f-left{
-      float: left;
-    }
-    .M-t-30{
-       margin-top: 30px !important;
-    }
-    .remember-checkbox label:before{
-        left: 0;
-    }
-    .remember-checkbox label{
-        padding-left: 25px;
-    }
- </style>
-@endif
+    <div id="pre-loader">
+        <img src="{{URL::asset('assets/images/pre-loader/loader-01.svg')}}" alt="">
+    </div>
 
-    <div class="wrapper">
+    <!--=================================
+preloader -->
 
-            <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            
-                <ul class="nav navbar-nav ml-auto" style="margin: auto;">
-                    <div class="btn-group mb-1">
-                        <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @if (App::getLocale() == 'ar')
-                        {{ LaravelLocalization::getCurrentLocaleName() }}
-                        <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
+    <!--=================================
+login-->
+
+    <section class="height-100vh d-flex align-items-center page-section-ptb login"
+             style="background-image: url('{{ asset('assets/images/sativa.png')}}');">
+        <div class="container">
+            <div class="row justify-content-center no-gutters vertical-align">
+                <div class="col-lg-4 col-md-6 login-fancy-bg bg"
+                     style="background-image: url('{{ asset('assets/images/login-inner-bg.jpg')}}');">
+                    <div class="login-fancy">
+                        <h2 class="text-white mb-20"></h2>
+                        <p class="mb-20 text-white"></p>
+                        <ul class="list-unstyled  pos-bot pb-30">
+                            <li class="list-inline-item"><a class="text-white" href="#"></a> </li>
+                            <li class="list-inline-item"><a class="text-white" href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 bg-white">
+                    <div class="login-fancy pb-40 clearfix">
+                        @if($type == 'student')
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول طالب</h3>
+                        @elseif($type == 'parent')
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول ولي امر</h3>
+                        @elseif($type == 'teacher')
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول معلم</h3>
                         @else
-                        {{ LaravelLocalization::getCurrentLocaleName() }}
-                        <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول ادمن</h3>
                         @endif
-                        </button>
-                        <div class="dropdown-menu">
-                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                    <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                        {{ $properties['native'] }}
-                                    </a>
-                            @endforeach
-                        </div>
-                    </div>
-                </ul>
-            </nav>
+                        <form method="POST" action="{{route('login')}}">
+                            @csrf
 
-
-        <!--=================================
- preloader -->
-
-        <div id="pre-loader">
-            <img src="images/pre-loader/loader-01.svg" alt="">
-        </div>
-
-        <!--=================================
- preloader -->
-
-        <!--=================================
- login-->
-
-        <section class="height-100vh d-flex align-items-center page-section-ptb login"
-            style="background-image: url(assets/images/login-bg.jpg);">
-            <div class="container">
-                <div class="row justify-content-center no-gutters vertical-align">
-                    <div class="col-lg-4 col-md-6 login-fancy-bg bg"
-                        style="background-image: url(images/login-inner-bg.jpg);">
-                        <div class="login-fancy">
-                            <h2 class="text-white mb-20"></h2>
-                            <p class="mb-20 text-white"></p>
-                            <ul class="list-unstyled  pos-bot pb-30">
-                                <li class="list-inline-item"><a class="text-white" href="#"> </a> </li>
-                                <li class="list-inline-item"><a class="text-white" href="#"> </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 bg-white">
-                        <div class="login-fancy pb-40 clearfix">
-                            <!-- <h3 class="mb-30">{{ trans('auth.sign_in') }}</h3> -->
-
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
-
-                                <input type="hidden" name="timezone" id="timezone">
-
-                                <div class="section-field mb-20">
-                                    <label class="mb-10 f-left" for="name">{{ trans('auth.E_mail') }}*</label>
-                                    <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
+                            <div class="section-field mb-20">
+                                <label class="mb-10" for="name">البريدالالكتروني*</label>
+                                <input id="email" type="email"
+                                       class="form-control @error('email') is-invalid @enderror" name="email"
+                                       value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input type="hidden" value="{{$type}}" name="type">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                @enderror
 
-                                </div>
+                            </div>
 
-                                <div class="section-field mb-20">
-                                    <label class="mb-10 f-left" for="Password">{{ trans('auth.password') }}*</label>
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
+                            <div class="section-field mb-20">
+                                <label class="mb-10" for="Password">كلمة المرور * </label>
+                                <input id="password" type="password"
+                                       class="form-control @error('password') is-invalid @enderror" name="password"
+                                       required autocomplete="current-password">
 
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                @enderror
 
+                            </div>
+                            <div class="section-field">
+                                <div class="remember-checkbox mb-30">
+                                    <input type="checkbox" class="form-control" name="two" id="two" />
+                                    <label for="two"> تذكرني</label>
+                                    <a href="#" class="float-right">هل نسيت كلمةالمرور ؟</a>
                                 </div>
-                                <div class="section-field">
-                                    <div class="remember-checkbox mb-30">
-                                        <input class="f-left" type="checkbox" class="form-control" name="two" id="two" />
-                                        <label for="two" class="f-left"> {{ trans('auth.remember_me') }}</label>
-                                    </div>
-                                </div>
-                                <div style="clear: both;"></div>
-                                <button class="button f-left M-t-30"><span>{{ trans('auth.login') }}</span><i class="fa fa-check"></i></button>
-                            </form>
-                        </div>
+                            </div>
+                            <button class="button"><span>دخول</span><i class="fa fa-check"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!--=================================
- login-->
+    <!--=================================
+login-->
 
-    </div>
-    <!-- jquery -->
-    <script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-    <!-- plugins-jquery -->
-    <script src="{{ URL::asset('assets/js/plugins-jquery.js') }}"></script>
-    <!-- plugin_path -->
-    <script>
-        var plugin_path = 'js/';
-
-    </script>
-
-    <!-- chart -->
-    <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
-    <!-- calendar -->
-    <script src="{{ URL::asset('assets/js/calendar.init.js') }}"></script>
-    <!-- charts sparkline -->
-    <script src="{{ URL::asset('assets/js/sparkline.init.js') }}"></script>
-    <!-- charts morris -->
-    <script src="{{ URL::asset('assets/js/morris.init.js') }}"></script>
-    <!-- datepicker -->
-    <script src="{{ URL::asset('assets/js/datepicker.js') }}"></script>
-    <!-- sweetalert2 -->
-    <script src="{{ URL::asset('assets/js/sweetalert2.js') }}"></script>
-    <!-- toastr -->
-    @yield('js')
-    <script src="{{ URL::asset('assets/js/toastr.js') }}"></script>
-    <!-- validation -->
-    <script src="{{ URL::asset('assets/js/validation.js') }}"></script>
-    <!-- lobilist -->
-    <script src="{{ URL::asset('assets/js/lobilist.js') }}"></script>
-    <!-- custom --> 
-    <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
-
-    
-<!-- https://5balloons.info/dealing-with-user-timezone-in-laravel/ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+</div>
+<!-- jquery -->
+<script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<!-- plugins-jquery -->
+<script src="{{ URL::asset('assets/js/plugins-jquery.js') }}"></script>
+<!-- plugin_path -->
 <script>
-        $( document ).ready(function() {
-            $('#timezone').val(moment.tz.guess());
-            console.log($('#timezone').val(moment.tz.guess()));
-        });        
+    var plugin_path = 'js/';
+
 </script>
 
+<!-- chart -->
+<script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
+<!-- calendar -->
+<script src="{{ URL::asset('assets/js/calendar.init.js') }}"></script>
+<!-- charts sparkline -->
+<script src="{{ URL::asset('assets/js/sparkline.init.js') }}"></script>
+<!-- charts morris -->
+<script src="{{ URL::asset('assets/js/morris.init.js') }}"></script>
+<!-- datepicker -->
+<script src="{{ URL::asset('assets/js/datepicker.js') }}"></script>
+<!-- sweetalert2 -->
+<script src="{{ URL::asset('assets/js/sweetalert2.js') }}"></script>
+<!-- toastr -->
+@yield('js')
+<script src="{{ URL::asset('assets/js/toastr.js') }}"></script>
+<!-- validation -->
+<script src="{{ URL::asset('assets/js/validation.js') }}"></script>
+<!-- lobilist -->
+<script src="{{ URL::asset('assets/js/lobilist.js') }}"></script>
+<!-- custom -->
+<script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+
 </body>
+
 </html>
