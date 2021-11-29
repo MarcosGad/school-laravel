@@ -9,8 +9,8 @@ Route::get('/', 'HomeController@index')->name('selection');
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');  
     Route::post('/login','LoginController@login')->name('login');
+    Route::get('/logout/{type}', 'LoginController@logout')->name('logout');
 });
-
 
 
 Route::group(
@@ -23,10 +23,10 @@ Route::group(
 
         Route::group(['middleware'=>['auth']],function(){
 
-            Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+            // Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
              
             //==============================dashboard============================
-            Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+            Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
             //==============================dashboard============================
             Route::group(['namespace' => 'Grades'], function () {
