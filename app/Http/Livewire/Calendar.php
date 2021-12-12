@@ -14,7 +14,6 @@ class Calendar extends Component
     public function getevent()
     {
         $events = Event::select('id','title','start')->get();
-
         return  json_encode($events);
     }
 
@@ -36,7 +35,7 @@ class Calendar extends Component
 
     public function render()
     {
-        $events = Event::select('id','title','start')->get();
+        $events = Event::select('id','title','start','event_number')->get();
         $this->events = json_encode($events);
         return view('livewire.calendar');
     }

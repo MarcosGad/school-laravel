@@ -289,7 +289,6 @@
                                                     <th>اسم الطالب</th>
                                                     <th>المرحلة الدراسية</th>
                                                     <th>الصف الدراسي</th>
-                                                    <th>القسم</th>
                                                     <th>نوع الرسوم</th>
                                                     <th>المبلغ</th>
                                                     <th>تاريخ الاضافة</th>
@@ -301,11 +300,10 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$section->invoice_date}}</td>
                                                         <td>{{$section->student->name}}</td>
-                                                        <td>#</td>
-                                                        <td>#</td>
-                                                        <td>#</td>
-                                                        <td>#</td>
-                                                        <td>#</td>
+                                                        <td>{{$section->grade->Name}}</td>
+                                                        <td>{{$section->classroom->Name_Class}}</td>
+                                                        <td>{{$section->fees->title}}</td>
+                                                        <td>{{$section->amount}}</td>
                                                         <td class="text-success">{{$section->created_at}}</td>
                                                     </tr>
                                                 @empty

@@ -18,8 +18,18 @@
                     events: JSON.parse(data),
                     dateClick(info)  {
                         var title = prompt('ادخل عنوان الحدث ');
-                        var date = new Date(info.dateStr + 'T00:00:00');
-                        var rand = Math.random();
+                        //var date = new Date(info.dateStr);
+                        var d = new Date(info.dateStr);
+                        var curr_date = d.getDate();
+                        var curr_month = d.getMonth() + 1; //Months are zero based
+                        var curr_year = d.getFullYear();
+                        if(curr_date <= 9){
+                          var date = curr_year + "-" + curr_month + "-0" + curr_date;
+                        }else {
+                          var date = curr_year + "-" + curr_month + "-" + curr_date;
+                        }
+                        console.log(date);
+                        var rand = (Math.random() + 1).toString(36).substring(7);
                         if(title != null && title != ''){
                             calendar.addEvent({
                                 title: title,
@@ -27,7 +37,7 @@
                                 event_number: rand,
                                 allDay: true
                             });
-                            var eventAdd = {title: title,start: date,event_number: rand};
+                            var eventAdd = {title:title,start:date,event_number:rand};
                         @this.addevent(eventAdd);
                             alert('تم اضافة الحدث بنجاح');
                         }else{
