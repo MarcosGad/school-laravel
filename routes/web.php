@@ -173,8 +173,8 @@ Route::get('test', function(){
     // }
     //dd(RunningNumber::generate('approval'));
     //dd(RunningNumber::generate('mod'));
-  
-
+    
+    
 });
 
 Route::get('/users', 'UserController@index')->name('users.index');
