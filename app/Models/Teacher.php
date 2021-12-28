@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
     use HasTranslations;
-    public $translatable = ['Name'];
+    public $translatable = ['name'];
     protected $guarded=[];
 
     // علاقة بين المعلمين والتخصصات لجلب اسم التخصص
