@@ -2,15 +2,15 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Http\Traits\PasswordChangedNotificationTrait;
+use App\Contracts\PasswordChangedNotificationContract;
 
-use App\Observers\PasswordChangedObserver;
 
-class User extends Authenticatable
+class User extends Authenticatable implements PasswordChangedNotificationContract
 {
-    use Notifiable;
+    use Notifiable, PasswordChangedNotificationTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -39,9 +39,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public static function booted()
-    {
-        static::observe(PasswordChangedObserver::class);
-    }
 }
