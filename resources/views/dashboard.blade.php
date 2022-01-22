@@ -42,6 +42,7 @@
                 <div class="row">
                     <div class="col-sm-6" >
                         <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">لوحة تحكم الادمن</h4>
+                        {{ changeDateFormate(date('Y-m-d'),'d/m/Y')  }}
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">

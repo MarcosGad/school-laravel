@@ -118,6 +118,7 @@ use App\Article;
 use AshAllenDesign\LaravelExchangeRates\Classes\ExchangeRate;
 use Illuminate\Support\Facades\Http;
 use App\RunningNumber;
+use Illuminate\Support\Str;
 
 Route::get('test', function(){
 
@@ -173,8 +174,40 @@ Route::get('test', function(){
     // }
     //dd(RunningNumber::generate('approval'));
     //dd(RunningNumber::generate('mod'));
-    
-    
+
+    // $collection = collect([1, 2, 3]);
+    // $piped = $collection->pipe(function ($collection) {
+    //     return $collection->sum();
+    // });
+    // dd($piped); // 6
+
+    // function WelcomeMsg()
+    // {
+    //     echo "Welcome to GeeksforGeeks";
+    // }
+    // // checking if the function named WelcomeMsg
+    // // exists or not
+    // if (function_exists('WelcomeMsg')) 
+    // {
+    //     echo "function is available.\n";
+    // } 
+    // else
+    // {
+    //     echo "function is not available.\n";
+    // }
+
+    // $plural1 = Str::plural('boy');        
+    // dd($plural1);
+
+    // $converted2 = Str::kebab('niceBlog');
+    // dd($converted2);
+
+    // $orderId = 123;
+    // return [
+    //     'type' => gettype($orderId),
+    //     'value' => $orderId,
+    // ];
+
 });
 
 Route::get('/users', 'UserController@index')->name('users.index');
