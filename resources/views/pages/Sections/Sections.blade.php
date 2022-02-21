@@ -205,7 +205,7 @@
                                                                                                         <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect2">
                                                                                                             @foreach($teachers as $teacher)
                                                                                                                 <option value="{{$teacher->id}}" @foreach($list_Sections->teachers as $t) @if($teacher->id == $t->id) selected="selected" @endif @endforeach>
-                                                                                                                     {{$teacher->Name}}
+                                                                                                                     {{$teacher->name}}
                                                                                                                 </option>
                                                                                                             @endforeach
                                                                                                         </select>
