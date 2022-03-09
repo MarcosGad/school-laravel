@@ -31,6 +31,9 @@ Route::group(
         
        //students
        Route::get('student','StudentController@index')->name('student.index');
+       Route::get('sections','StudentController@sections')->name('sections');
+       Route::post('attendance','StudentController@attendance')->name('attendance');
+       Route::post('edit_attendance','StudentController@editAttendance')->name('attendance.edit');
 
     });
 
