@@ -52,7 +52,9 @@ class StudentController extends Controller
                     'attendence_date' => $attenddate,
                     'attendence_status' => $attendence_status
                    ]);
+                   
                 }
+                return redirect()->back();
             }else {
                 return $this->editAttendance($request);
             }
