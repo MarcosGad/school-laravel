@@ -18,7 +18,7 @@ class CreateSubjectsTable extends Migration
             $table->string('name');
             $table->foreignId('grade_id')->references('id')->on('Grades')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('Classrooms')->onDelete('cascade');
-            $table->foreignId('teacher_id')->references('id')->on('Classrooms')->onDelete('cascade');
+            $table->foreignId('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->timestamps();
         });
     }

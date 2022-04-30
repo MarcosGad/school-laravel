@@ -32,18 +32,54 @@ class StudentController extends Controller
     public function attendance(Request $request)
     {
 
+        // try {
+
+        //     $attenddate = date('Y-m-d');
+        //     if (is_array($request->attendences) || is_object($request->attendences)) {
+        //         foreach ($request->attendences as $studentid => $attendence) {
+        //             if ($attendence == 'presence') {
+        //                 $attendence_status = true;
+        //             } elseif ($attendence == 'absent') {
+        //                 $attendence_status = false;
+        //             }
+
+        //             Attendance::create([
+        //                 'student_id' => $studentid,
+        //                 'grade_id' => $request->grade_id,
+        //                 'classroom_id' => $request->classroom_id,
+        //                 'section_id' => $request->section_id,
+        //                 'teacher_id' => Auth::user()->id,
+        //                 'attendence_date' => $attenddate,
+        //                 'attendence_status' => $attendence_status
+        //            ]);
+                   
+        //         }
+        //         return redirect()->back();
+        //     }else {
+        //         return $this->editAttendance($request);
+        //     }
+        // } catch (Exception $e) {
+        //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        // }
+
+
         try {
 
             $attenddate = date('Y-m-d');
-            if (is_array($request->attendences) || is_object($request->attendences)) {
-                foreach ($request->attendences as $studentid => $attendence) {
-                    if ($attendence == 'presence') {
-                        $attendence_status = true;
-                    } elseif ($attendence == 'absent') {
-                        $attendence_status = false;
-                    }
+            foreach ($request->attendences as $studentid => $attendence) {
 
-                    Attendance::create([
+                if ($attendence == 'presence') {
+                    $attendence_status = true;
+                } else if ($attendence == 'absent') {
+                    $attendence_status = false;
+                }
+
+                Attendance::updateorCreate(
+                    [
+                        'student_id' => $studentid,
+                        'attendence_date' => $attenddate
+                    ],
+                    [
                         'student_id' => $studentid,
                         'grade_id' => $request->grade_id,
                         'classroom_id' => $request->classroom_id,
@@ -51,13 +87,10 @@ class StudentController extends Controller
                         'teacher_id' => Auth::user()->id,
                         'attendence_date' => $attenddate,
                         'attendence_status' => $attendence_status
-                   ]);
-                   
-                }
-                return redirect()->back();
-            }else {
-                return $this->editAttendance($request);
+                    ]);
             }
+            toastr()->success(trans('messages.success'));
+            return redirect()->back();
         } catch (Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

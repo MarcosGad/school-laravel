@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
         //make by Package
         //https://github.com/orangehill/iseed
         //php artisan iseed student_accounts
-        $this->call(StudentAccountsTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
     }
 }
